@@ -62,11 +62,11 @@ public class Vacancy {
             return false;
         }
         Vacancy vacancy = (Vacancy) o;
-        return id == vacancy.id && title.equals(vacancy.title) && creationDate.equals(vacancy.creationDate);
+        return id == vacancy.id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, creationDate);
+        return Objects.hash(id);
     }
 }
