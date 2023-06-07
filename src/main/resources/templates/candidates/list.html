@@ -41,7 +41,6 @@
             <tr th:each="candidate: ${candidates}">
                 <td th:text="${candidate.id}"></td>
                 <td th:text="${candidate.name}"></td>
-                <td th:text="${candidate.description}"></td>
                 <td th:text="${#temporals.format(candidate.creationDate, 'dd/MM/yyyy')}"></td>
             </tr>
             </tbody>
