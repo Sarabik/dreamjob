@@ -1,16 +1,15 @@
 package ru.job4j.dreamjob.repository;
 
+import org.springframework.stereotype.Repository;
 import ru.job4j.dreamjob.model.Vacancy;
-
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+@Repository
 public class MemoryVacancyRepository implements VacancyRepository {
-
-    private static final MemoryVacancyRepository INSTANCE = new MemoryVacancyRepository();
 
     private int nextId = 1;
 
@@ -23,10 +22,6 @@ public class MemoryVacancyRepository implements VacancyRepository {
         save(new Vacancy(0, "Middle Java Developer", "description4", LocalDateTime.of(2023, 5, 1, 12, 36)));
         save(new Vacancy(0, "Middle+ Java Developer", "description5", LocalDateTime.of(2023, 5, 10, 10, 10)));
         save(new Vacancy(0, "Senior Java Developer", "description6", LocalDateTime.of(2023, 5, 22, 17, 20)));
-    }
-
-    public static MemoryVacancyRepository getInstance() {
-        return INSTANCE;
     }
 
     @Override
