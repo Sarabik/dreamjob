@@ -12,14 +12,36 @@ public class Candidate {
 
     private LocalDateTime creationDate = LocalDateTime.now();
 
+    private boolean visible;
+
+    private int cityId;
+
     public Candidate() {
     }
 
-    public Candidate(int id, String name, String description, LocalDateTime creationDate) {
+    public Candidate(int id, String name, String description, LocalDateTime creationDate, boolean visible, int cityId) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.creationDate = creationDate;
+        this.visible = visible;
+        this.cityId = cityId;
+    }
+
+    public int getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(int cityId) {
+        this.cityId = cityId;
+    }
+
+    public boolean getVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
     }
 
     public int getId() {

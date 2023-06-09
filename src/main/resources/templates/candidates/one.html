@@ -9,7 +9,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
 
-  <title>Редактирование вакансии</title>
+  <title>Редактирование записи о кандидате</title>
 </head>
 <body>
 <div class="container-fluid p-0">
@@ -37,6 +37,16 @@
       <div class="mb-3">
         <label for="description" class="form-label"><b>Описание</b></label>
         <textarea class="form-control" id="description" name="description" th:field="*{description}" rows="25" placeholder="Укажите должность, на которую претендуете, и опишите навыки"></textarea>
+      </div>
+      <div class="form-check mb-3">
+        <input type="checkbox" name="visible" class="form-check-input" id="visible" th:field="*{visible}">
+        <label class="form-check-label" for="visible">Опубликовать</label>
+      </div>
+      <div class="mb-3">
+        <label for="city"><b>Город</b></label>
+        <select class="form-control" id="city" name="cityId">
+          <option th:each="city : ${cities}" th:value="${city.id}" th:text="${city.name}" th:field="*{cityId}" th:selected="${city.id==cityId}"></option>
+        </select>
       </div>
       <div class="mb-3 row">
         <div class="col-6"></div>
