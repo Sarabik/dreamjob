@@ -20,12 +20,12 @@ public class MemoryVacancyRepository implements VacancyRepository {
     private final Map<Integer, Vacancy> vacancies = new ConcurrentHashMap<>();
 
     private MemoryVacancyRepository() {
-        save(new Vacancy(0, "Intern Java Developer", "description1", LocalDateTime.of(2023, 1, 10, 12, 30), true, 1));
-        save(new Vacancy(0, "Junior Java Developer", "description2", LocalDateTime.of(2023, 2, 11, 12, 38), true, 2));
-        save(new Vacancy(0, "Junior+ Java Developer", "description3", LocalDateTime.of(2023, 4, 3, 15, 30), true, 1));
-        save(new Vacancy(0, "Middle Java Developer", "description4", LocalDateTime.of(2023, 5, 1, 12, 36), true, 2));
-        save(new Vacancy(0, "Middle+ Java Developer", "description5", LocalDateTime.of(2023, 5, 10, 10, 10), true, 3));
-        save(new Vacancy(0, "Senior Java Developer", "description6", LocalDateTime.of(2023, 5, 22, 17, 20), true, 2));
+        save(new Vacancy(0, "Intern Java Developer", "description1", LocalDateTime.of(2023, 1, 10, 12, 30), true, 1, 0));
+        save(new Vacancy(0, "Junior Java Developer", "description2", LocalDateTime.of(2023, 2, 11, 12, 38), true, 2, 0));
+        save(new Vacancy(0, "Junior+ Java Developer", "description3", LocalDateTime.of(2023, 4, 3, 15, 30), true, 1, 0));
+        save(new Vacancy(0, "Middle Java Developer", "description4", LocalDateTime.of(2023, 5, 1, 12, 36), true, 2, 0));
+        save(new Vacancy(0, "Middle+ Java Developer", "description5", LocalDateTime.of(2023, 5, 10, 10, 10), true, 3, 0));
+        save(new Vacancy(0, "Senior Java Developer", "description6", LocalDateTime.of(2023, 5, 22, 17, 20), true, 2, 0));
     }
 
     @Override
@@ -44,7 +44,7 @@ public class MemoryVacancyRepository implements VacancyRepository {
     public boolean update(Vacancy vacancy) {
         return vacancies.computeIfPresent(vacancy.getId(), (id, oldVacancy) ->
                 new Vacancy(oldVacancy.getId(), vacancy.getTitle(), vacancy.getDescription(),
-                        vacancy.getCreationDate(), vacancy.getVisible(), vacancy.getCityId())) != null;
+                        vacancy.getCreationDate(), vacancy.getVisible(), vacancy.getCityId(), vacancy.getFileId())) != null;
     }
 
     @Override
