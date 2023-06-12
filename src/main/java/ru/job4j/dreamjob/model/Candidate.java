@@ -1,9 +1,22 @@
 package ru.job4j.dreamjob.model;
 
 import java.time.LocalDateTime;
+import java.util.Map;
 import java.util.Objects;
 
 public class Candidate {
+
+    /* маппинг, где ключи это имена столбцов из БД, а значения - соответствующие названия полей класса Candidate */
+    public static final Map<String, String> COLUMN_MAPPING = Map.of(
+            "id", "id",
+            "name", "name",
+            "description", "description",
+            "creation_date", "creationDate",
+            "visible", "visible",
+            "city_id", "cityId",
+            "file_id", "fileId"
+    );
+
     private int id;
 
     private String name;
