@@ -122,5 +122,4 @@ class Sql2oCandidateRepositoryTest {
         boolean isUpdated = sql2oCandidateRepository.update(candidate);
         assertThat(isUpdated).isFalse();
     }
-
 }
