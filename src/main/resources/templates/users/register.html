@@ -8,9 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
 
-    <title>Список кандидатов</title>
+    <title>Регистрация</title>
 </head>
 <body>
 <div class="container-fluid p-0">
@@ -21,7 +20,7 @@
                 <div class="navbar-nav me-auto">
                     <a class="nav-item nav-link" href="/">Главная</a>
                     <a class="nav-item nav-link" th:href="@{/vacancies}">Вакансии</a>
-                    <a class="nav-item nav-link active" th:href="@{/candidates}">Кандидаты</a>
+                    <a class="nav-item nav-link" th:href="@{/candidates}">Кандидаты</a>
                     <a class="nav-item nav-link" th:href="@{/vacancies/create}">Создать вакансию</a>
                     <a class="nav-item nav-link" th:href="@{/candidates/create}">Создать резюме</a>
                 </div>
@@ -31,35 +30,32 @@
             </div>
         </div>
     </nav>
-<div class="container">
-    <div class="row">
-        <table class="table">
-            <thead>
-            <tr>
-                <th><i class="bi bi-square"></i></th>
-                <th scope="col">#</th>
-                <th scope="col">Имя</th>
-                <th scope="col">Дата создания</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="candidate: ${candidates}">
-                <td>
-                    <span th:if="${candidate.visible}">
-                        <i class="bi bi-check-square"></i>
-                    </span>
-                    <span th:if="${!candidate.visible}">
-                        <i class="bi bi-square"></i>
-                    </span>
-                </td>
-                <td th:text="${candidate.id}"></td>
-                <td><a th:text="${candidate.name}" th:href="@{/candidates/{candidateId}(candidateId=${candidate.id})}"></a></td>
-                <td th:text="${#temporals.format(candidate.creationDate, 'dd/MM/yyyy')}"></td>
-            </tr>
-            </tbody>
-        </table>
+    <div class="container">
+        <form class="mt-3" th:action="@{/users/register}" method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="name" class="form-label"><b>Имя</b></label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Иван" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label"><b>Почта</b></label>
+                <input type="text" class="form-control" id="email" name="email" placeholder="ivan@mail.ru" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label"><b>Пароль</b></label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <div class="mb-3 row">
+                <div class="col-6"></div>
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col-6"><a class="btn btn-danger w-100" th:href="@{/}">Отмена</a></div>
+                        <div class="col-6"><button class="btn btn-primary w-100" type="submit">Зарегистрироваться</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
-
 </body>
 </html>
