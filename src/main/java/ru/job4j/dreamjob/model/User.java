@@ -12,6 +12,9 @@ public class User {
 
     private String password;
 
+    public User() {
+    }
+
     public User(String email, String name, String password) {
         this.id = 0;
         this.email = email;
