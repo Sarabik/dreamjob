@@ -43,12 +43,12 @@ public class SimpleVacancyService implements VacancyService {
 
     @Override
     public boolean update(Vacancy vacancy, FileDto image) {
-        var isNewFileEmpty = image.getContent().length == 0;
+        boolean isNewFileEmpty = image.getContent().length == 0;
         if (isNewFileEmpty) {
             return vacancyRepository.update(vacancy);
         }
         /* если передан новый не пустой файл, то старый удаляем, а новый сохраняем */
-        var oldFileId = vacancy.getFileId();
+        int oldFileId = vacancy.getFileId();
         saveNewFile(vacancy, image);
         var isUpdated = vacancyRepository.update(vacancy);
         fileService.deleteById(oldFileId);
